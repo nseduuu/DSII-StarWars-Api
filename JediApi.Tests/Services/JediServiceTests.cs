@@ -46,7 +46,11 @@ namespace JediApi.Tests.Services
             _repositoryMock.Setup(repository => repository.GetByIdAsync(expectedJedi)).ReturnsAsync(jedi);
             var resultJedi = await _service.GetByIdAsync(expectedJedi);
 
-            Assert.Null(resultJedi);
+            Assert.NotNull(resultJedi);
+            Assert.Equal(1, resultJedi.Id);
+            Assert.Equal("Luke Skywalker", resultJedi.Name);
+            Assert.Equal(100, resultJedi.Strength);
+            Assert.Equal(1, resultJedi.Version);
         }
 
         [Fact]
