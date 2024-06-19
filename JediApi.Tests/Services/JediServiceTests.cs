@@ -66,7 +66,7 @@ namespace JediApi.Tests.Services
             _repositoryMock.Setup(repository => repository.GetAllAsync()).ReturnsAsync(jedis);
             var resultJedi = await _service.GetAllAsync();
 
-            Assert.Equal(3, resultJedi.Count);
+            Assert.Equal(resultJedi, jedis);
         }
 
     }
